@@ -1,9 +1,14 @@
 {
   "name": "microservice-bootstrap",
+  "jest": {
+    "verbose": true,
+    "transform": {}
+  },
   "version": "1.0.0",
   "description": "An opinionated microservice framework for quick bootstrapping of code",
   "scripts": {
-    "start": "nodemon -r esm lib/app.js"
+    "start": "set NODE_ENV=development&& nodemon -r esm lib/app.js",
+    "test": "set NODE_ENV=development&& node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "author": "cohire/lacunadream",
   "dependencies": {
@@ -19,6 +24,10 @@
     "winston": "^2.4.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.15"
+    "cross-env": "^7.0.3",
+    "eslint": "^8.16.0",
+    "jest": "^28.1.0",
+    "nodemon": "^2.0.15",
+    "supertest": "^6.2.3"
   }
 }
