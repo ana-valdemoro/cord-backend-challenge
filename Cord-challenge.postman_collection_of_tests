@@ -1,0 +1,344 @@
+{
+	"info": {
+		"_postman_id": "c76c3d42-784c-494a-9711-f1b1dfd6bff9",
+		"name": "Cord-challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12914105"
+	},
+	"item": [
+		{
+			"name": "Check empty body -> Expect ('Mising body required parameters')",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7500/api/account/member",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7500",
+					"path": [
+						"api",
+						"account",
+						"member"
+					],
+					"query": [
+						{
+							"key": "role",
+							"value": "admin",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check body with one required param and one extraneous param -> Expect('Unkown parameters in request body')')",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"account_id\": 12,\r\n    \"surname\":\"Smith\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7500/api/account/member",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7500",
+					"path": [
+						"api",
+						"account",
+						"member"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check body without required parameters -> Expected ('Missing body required parameters')",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"surname\": \"ramirez\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7500/api/account/member",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7500",
+					"path": [
+						"api",
+						"account",
+						"member"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check typeof integer param  --> Expect(Param page must be type of integer)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7500/api/account/search?page=1.4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7500",
+					"path": [
+						"api",
+						"account",
+						"search"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1.4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check typeof string param -> Expect(Ok)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7500/api/account/search?include_relocate=yes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7500",
+					"path": [
+						"api",
+						"account",
+						"search"
+					],
+					"query": [
+						{
+							"key": "include_relocate",
+							"value": "yes"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check data type of array --> Expect(parameter must be type of array string)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7500/api/account/search?keyword[]=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7500",
+					"path": [
+						"api",
+						"account",
+						"search"
+					],
+					"query": [
+						{
+							"key": "sort_by",
+							"value": "quality",
+							"disabled": true
+						},
+						{
+							"key": "keyword",
+							"value": "pablo",
+							"disabled": true
+						},
+						{
+							"key": "keyword[]",
+							"value": "1"
+						},
+						{
+							"key": "keyword",
+							"value": "false",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Unknown route -> EXPECT (Not found)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7500/api/account/cart",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7500",
+					"path": [
+						"api",
+						"account",
+						"cart"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Body required parameters -> EXPECT(OK)",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"account_id\": 1234\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7500/api/account/member",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7500",
+					"path": [
+						"api",
+						"account",
+						"member"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Required parameter with incorrect data type ->EXPECT(The parameters do not comply with the typing)",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"account_id\": \"KISS\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7500/api/account/member",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7500",
+					"path": [
+						"api",
+						"account",
+						"member"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Empty body in optional params ->EXPECT(OK)",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7500/api/account/profile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7500",
+					"path": [
+						"api",
+						"account",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Incorrect data type paremeter ->Expect(job_title is not of type string)",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"job_title\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7500/api/account/profile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7500",
+					"path": [
+						"api",
+						"account",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
