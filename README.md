@@ -23,8 +23,8 @@ Also, there is a chance that the rules do not cover all the existing routes. In 
 ### Non-functional requirements
 • NodeJS   
 • ES6  
-• JEST 
-• supertest
+• JEST   
+• supertest  
 • eslint
 
 ### Setup Guide
