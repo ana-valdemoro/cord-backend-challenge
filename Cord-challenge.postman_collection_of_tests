@@ -44,7 +44,7 @@
 			"response": []
 		},
 		{
-			"name": "Check body with one required param and one extraneous param -> Expect('Unkown parameters in request body')')",
+			"name": "Check body with one required param and one extraneous param -> Expect('Detected extraneous parameters in body. There are : surname')')",
 			"request": {
 				"method": "DELETE",
 				"header": [],
@@ -74,7 +74,7 @@
 			"response": []
 		},
 		{
-			"name": "Check body without required parameters -> Expected ('Missing body required parameters')",
+			"name": "Check body without required parameters -> Expected (ARRAY of errors 'Missing body required parameters'. There are: account_id, Detected extraneous parameters in body. There are : surname )",
 			"request": {
 				"method": "DELETE",
 				"header": [],
@@ -104,7 +104,7 @@
 			"response": []
 		},
 		{
-			"name": "Check typeof integer param  --> Expect(Param page must be type of integer)",
+			"name": "Check typeof integer param  --> Expect(page query parameter must be type of integer)",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -251,7 +251,7 @@
 			"response": []
 		},
 		{
-			"name": "Required parameter with incorrect data type ->EXPECT(The parameters do not comply with the typing)",
+			"name": "Required parameter with incorrect data type ->EXPECT(account_id query parameter must be type of integer)",
 			"request": {
 				"method": "DELETE",
 				"header": [],
@@ -311,13 +311,13 @@
 			"response": []
 		},
 		{
-			"name": "Incorrect data type paremeter ->Expect(job_title is not of type string)",
+			"name": "Incorrect data type paremeter ->Expect(job_title query parameter must be type of string)",
 			"request": {
 				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"job_title\":1\r\n}",
+					"raw": "{\r\n    \"job_title\": 1\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
